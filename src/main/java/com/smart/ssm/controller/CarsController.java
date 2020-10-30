@@ -30,11 +30,8 @@ public class CarsController {
     ResponseEntity<List<CarsVO>> list(@RequestParam("userId") int userId) {
         try {
             List<CarsVO> voList = carsService.findAll(userId);
-            if (voList != null) {
-                return ResponseEntity.success(voList);
-            } else {
-                return ResponseEntity.error();
-            }
+            //返回获取的数据
+            return ResponseEntity.success(voList);
         } catch (Exception e) {
             return ResponseEntity.error();
         }
@@ -56,7 +53,7 @@ public class CarsController {
                 //返回成功的方法
                 return ResponseEntity.success(true);
             } else {
-                //否则返回失败的方法
+                //返回失败的方法
                 return ResponseEntity.error();
             }
         } catch (Exception e) {
@@ -74,9 +71,12 @@ public class CarsController {
     public ResponseEntity<Boolean> del(@RequestParam int carsId) {
         try {
             int count = carsService.delProduct(carsId);
+            //如果 count > 0,则说明删除成功
             if (count > 0) {
+                //返回成功的方法
                 return ResponseEntity.success(true);
             } else {
+                //返回失败的方法
                 return ResponseEntity.error();
             }
         } catch (Exception e) {
@@ -88,9 +88,12 @@ public class CarsController {
     public ResponseEntity<Boolean> updateNum(@RequestParam int carsId, @RequestParam int num) {
         try {
             int count = carsService.updateProductNum(carsId, num);
+            //如果 count > 0,则说明修改成功
             if (count > 0) {
+                //返回成功的方法
                 return ResponseEntity.success(true);
             } else {
+                //返回失败的方法
                 return ResponseEntity.error();
             }
         } catch (Exception e) {
