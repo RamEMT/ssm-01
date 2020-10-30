@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smart.ssm.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="Product">
+        <id property="productId" column="product_id"/>
+        <result property="name" column="name"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select product_id, name, status from t_product where status = 0;
+    </select>
+</mapper>
